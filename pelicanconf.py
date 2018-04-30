@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Lazar Zivadinovic'
 SITENAME = 'L Z'
-SITEURL = ''
+SITEURL = 'https://lzivadinovic.com'
 LOCAL_BOOTSTRAP = True
 ARTICLE_URL = 'blog/{slug}.html'
 ARTICLE_SAVE_AS = 'blog/{slug}.html'
