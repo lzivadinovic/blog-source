@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Dropbox - 500</title>
+<link href="https://cfl.dropboxstatic.com/static/css/error.css" rel="stylesheet" type="text/css"/>
+<link rel="shortcut icon" href="https://cfl.dropboxstatic.com/static/images/favicon.ico"/>
+
+</head>
+<body>
+<div class="figure">
+<img src="https://cfl.dropboxstatic.com/static/images/illustration_catalog/sickbox-illo_m1.png" alt="Error: 500"/>
+</div>
+<div id="errorbox">
+<h1>Error (500)</h1>Something went wrong. Don't worry, your files are still safe and the Dropboxers have been notified. Check out our <a href="https://www.dropbox.com/help">Help Center</a> and <a href="https://forums.dropbox.com">forums</a> for help, or head back to <a href="https://www.dropbox.com/home">home</a>.
+</div>
+<script type="text/javascript">
+        "use strict";
+
+        var download_id = "08955235540805573581096493777880909409207169379019054207450642717925";
+        var notify_domain = "www.dropbox.com";
+        var message = null;
+
+        var message_obj = {"download_id": download_id, "status": "failed"}
+        if (message) {
+            message_obj.message = message;
+        }
+        window.top.postMessage(
+            JSON.stringify(message_obj),
+            "https://" + notify_domain
+        )
+        </script>
+</body>
+</html>
