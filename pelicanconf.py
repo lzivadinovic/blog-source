@@ -45,7 +45,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 DEFAULT_PAGINATION = 10 
 
-RELATIVE_URLS = False
+RELATIVE_URLS = False 
 
 THEME = "pelican-bootstrap3"
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
