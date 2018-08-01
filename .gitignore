@@ -4,3 +4,4 @@ srv.pid
 __pycache__
 publishconf.py
 *.tar.gz
+venv

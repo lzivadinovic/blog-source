@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+
 AUTHOR = 'Lazar Zivadinovic'
 SITENAME = 'L Z'
 SITEURL = 'https://lzivadinovic.com'
@@ -9,6 +10,9 @@ LOCAL_BOOTSTRAP = True
 ARTICLE_URL = 'blog/{slug}.html'
 ARTICLE_SAVE_AS = 'blog/{slug}.html'
 
+LOAD_CONTENT_CACHE = False
+DISPLAY_CATEGORIES_ON_MENU = False
+DELETE_OUTPUT_DIRECTORY = True
 
 PATH = 'content'
 
@@ -50,7 +54,7 @@ RELATIVE_URLS = False
 THEME = "pelican-bootstrap3"
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
 
-DISPLAY_PAGES_ON_MENU = True
+DISPLAY_PAGES_ON_MENU = False
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
@@ -59,6 +63,7 @@ RELATIVE_URLS = True
 SOCIAL = (('linkedin', 'https://linkedin.com/in/lazar-zivadinovic-8a6437161'),
           ('github', 'https://github.com/lzivadinovic'))
 
+MENUITEMS = [('About','/pages/about.html')]
 
 SIDEBAR_IMAGES = ['/images/walk.gif']
 
