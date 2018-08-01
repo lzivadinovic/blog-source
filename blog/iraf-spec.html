@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+<title>Redukcija spektara u IRAF-u - L Z</title>
+<!-- Using the latest rendering mode for IE -->
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="http://lzivadinovic.com/blog/iraf-spec.html" rel="canonical"/>
+<meta content="Lazar Zivadinovic" name="author">
+<meta content="Kratak pregled o redukciji spektara u paketu IRAF" name="description">
+<meta content="L Z" property="og:site_name">
+<meta content="article" property="og:type"/>
+<meta content="Redukcija spektara u IRAF-u" property="og:title"/>
+<meta content="http://lzivadinovic.com/blog/iraf-spec.html" property="og:url"/>
+<meta content="Kratak pregled o redukciji spektara u paketu IRAF" property="og:description"/>
+<meta content="2016-05-20" property="article:published_time"/>
+<meta content="articles" property="article:section"/>
+<meta content="Lazar Zivadinovic" property="article:author"/>
+<!-- Bootstrap -->
+<link href="http://lzivadinovic.com/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="http://lzivadinovic.com/theme/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="http://lzivadinovic.com/theme/css/pygments/native.css" rel="stylesheet"/>
+<link href="http://lzivadinovic.com/theme/css/style.css" rel="stylesheet" type="text/css">
+<link href="http://lzivadinovic.com/feeds/all.atom.xml" rel="alternate" title="L Z ATOM Feed" type="application/atom+xml">
+<link href="http://lzivadinovic.com/feeds/articles.atom.xml" rel="alternate" title="L Z articles ATOM Feed" type="application/atom+xml"/>
+</link></link></link></meta></meta></meta></head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container">
+<div class="navbar-header">
+<button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="http://lzivadinovic.com/">
+L Z            </a>
+</div>
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+<ul class="nav navbar-nav">
+<li><a href="/pages/about.html">About</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<!-- Content Container -->
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<section id="content">
+<article>
+<header class="page-header">
+<h1>
+<a href="http://lzivadinovic.com/blog/iraf-spec.html" rel="bookmark" title="Permalink to Redukcija spektara u IRAF-u">
+                        Redukcija spektara u IRAF-u
+                    </a>
+</h1>
+</header>
+<div class="entry-content">
+<div class="panel">
+<div class="panel-body">
+<footer class="post-info">
+<span class="label label-default">Date</span>
+<span class="published">
+<i class="fa fa-calendar"></i><time datetime="2016-05-20T09:15:00+02:00"> May 20, 2016</time>
+</span>
+</footer><!-- /.post-info --> </div>
+</div>
+<p>IRAF folder mozete skinuti ovde.</p>
+<p>Pre svega, ovo je jako šturo i neformalno i služi kao podsetnik.</p>
+<p>Suviše sam lenj da bih sređivao i da bih pravio "skriptu" ili tako nešto.</p>
+<p>U folderu "raw_data" se nalaze sirovi snimci na kojima nije vrsena nikakva redukcija.</p>
+<p>Prva redukcija koja je izvrsena je redukcija overscan-a. Overscan predstavlja piksele na ivici CCD kamere na kojima nije zabelezen nikakav podatak. Ova redukcija je izvrsena fitovanjem svih podataka, tj podataka iz svih redova, na nivo overscan-a.</p>
+<p>Ovo je radjeno funkcijom fit1d koja je pozivana komandom "epar fit1d"</p>
+<p>Nakon redukcije lazne nule, sledeca uradjena stvar je kombinovanje svih bias snimaka u master_bias snimak. Ovo je radjeno komandom "epar imcombine" gde smo selektovali prvih 10 slika iz naseg seta podataka, jer su one bias.</p>
+<img alt="" class="align-center" src="../images/iraf/rezultat.png"/>
+<p>Sledeca izvrsena korekcija je oduzimanje master_bias.fit od svih snimaka.</p>
+<p>Ovo radimo zato sto bias predstavlja sum samog cipa. Bias snimak se izradjuje tako sto napravimo snimak sa nultom ekspozicijom.</p>
+<p>Drugi naziv sa bias je i read out noise. #Ja ga tako zovem :D
+Ova korekcija je izvrsena funkcijom "epar imartih".</p>
+<p>Sledeca izvrsena redukcija je trimovanje. Ovo se se izvrsava zbog toga sto nas spektar nece biti snimljen na celom CCD cipu, vec na nekom uskom delu redova. Trimovanjem izbacujemo regione koji ne nose nikakvu informaciju i ostaje nam samo spektar.</p>
+<p>Naredna uradjena stvar je pravljenje master flat field snimka. Flat field nam govori o raspodeli osetljivosti razlicitih regiona na svetlost. Snimak je izradjen spajanjem svih flat snimaka (kao i kod bias snimaka). Flat field snimci su snimci sa nazivom [* 19.fit- * 025.fit]. Zatim, je uredjeno usrednjavanje flat field snimka. Ono je vrseno iz razloga jer osetljivost cipa varira u zavisnosti od talasne duzine svetlosti.</p>
+<p>Ovo je radjeno deljenjem intenziteta svakog piksela srednjom osetljivoscu cipa. Srednja vrednost je odredjena funkcijom imstat i iznosi 14588 (count's - jedinica)</p>
+<p>Nakon normalizovanja master_flat snimka, snimci spektara i komparacionih lampi su redukovani gore usrednjenim flat field snimkom.</p>
+<p>Zatim je vrseno raspakivanje spektara funkcijom apextract (podesavanje logova) i apall iz paketa twood. Ovde sam naisao na problem o kom pise vise u fajlu "bag_sa_warning_all_pixel_rejected". Probao sam da popravim kod ovom korekcijom, ali sam dobio invertovane snimke iz nekog razloga. Ne znam sta se tu desavalo, zato sam nastavio da trazim dalje.</p>
+<p>Takodje, ispostavilo se da program ne pronalazi automatski pozadinu koju je potrebno oduzeti. (pogledati spaceman prirucnik) Zato su promenjeni parametri b_sampl = -70:-10, 10:70 kao i funkcija za fitovanje
+Korisceni parametri se nalaze u slikama raspakivanje_zvezde* kao i raspakivanje_lampi*. Takodje, snimljeni su i log fajlovi, za koje nisam siguran na koje vreme se odnose. Najsigurnije je gledati po timestamp-u. Skoro sigurno su logovi za lampe i zvezde u fajlu log_za_spektre.log posmatrati poslednjih 6 redukovanih fajlova.</p>
+<p>Sada imamo kako izgleda raspodela spektara po pikselima, ali nama to nije od koristi. Mi zelimo da dobijemo raspodelu spektra po talasnim duzinama. Zato imamo kalibracione lampe i cilj je kalibrisati nase spektre.</p>
+<p>Posto imamo snimljene spektre nasih lampi, zelimo da odredimo na kojoj se talasnoj duzini nalaze linije iz tog spektra. Ovo radimo tako sto odemo na bazu podataka <a class="reference external" href="http://www.noao.edu/kpno/specatlas/that/thar.html">ovde</a>  (Torijum-Argonska lampa) i izaberemo odredjeni opseg talasnih duzina (6255 - 6767 A) (vizuelna inspekcija). Takodje, spektar nase lampe postoji u datoteci thar.dat koja se nalazi u folderu /iraf/noao/lib/linelists. Identifikaciju vrsimo pokretanjem funkcije identify sa prefiksom epar. Ova funkcija se nalazi u paketu oned.</p>
+<p>Ok, nekako sam uspeo da uradim prebacivanje sa piksela na talasne duzine.
+#Now, only God knows</p>
+<p>Problem je bio sa malim brojem postavljenih linija. Ovo mi je bilo jako cudno i zato sto nasa kalibraciona lampa ne daje isti fluks kao i komparacioni spektar pa nisam mogao da nadjem sta je sta tu.</p>
+<p>normalizovao sam spektre funkciojom conti</p>
+<p>uradio sam telusku korekciju koristeci template_27vul.fits (Onicev fajl)
+#Ovde je bio plan da se nadje model zvezdane atmosfere i da se na osnovu toga odrede telurske linije.
+#Problem je bio sa tim sto Fluks na modelu nije bio kalibrisan pa prilikom sredjivanja template-a za telurske linije, dobijemo emisiju.
+#Smatram da ako bih to sredio, da bi radilo bas fino...
+#P.S. Obratiti paznju na to da model mora da se pomeri za dlambda zbog toga sto mi snimamo shiftovane linije, dok model daje "apsolutne"</p>
+<p>za * 15.fits V korekciono je -22 km/s
+za * 30.fits V korekciono je -22.15 km/s
+Ovo je baricentricna korekcija</p>
+<p>talasne duzine H alpha
+15.fits = 6563.04 A
+30.fits = 6562.95 A</p>
+<p>H alpha (realno) = 6562.81 A
+c = 299.92.458 km/s</p>
+<p>Radijalna brzina posle korekcija za h alpha
+15.fits = −11,493484446 km/s
+30.fits = −14,384314591 km/s</p>
+<p>A za helijum</p>
+<p>15.fits = −19,532823708 km/s
+30.fits = −20,879569656 km/s</p>
+<p>Ovaj HeI je jako cudan zato sto spekatr nije lepo ociscen i pravi problem prilkom fitovanja (bilo da fitujem gausom, lorencom ili fojtom).</p>
+<p>Period je odredjen preko neke skripte koja je pisana za gnuoctave, nisam dublje zalazio u to, samo mi je ispljunulo broj (P=68.663d).</p>
+<p>Na kraju krajeva, iskoristio sam podatke iz fajla conti koji sadrzi vrednosti za sva posmatranja i sve ih na istu fazu.</p>
+<p>Sve se to lepo plotovalo (rasulo, hehe) i dobili smo ovaj grafik i zakljucili da je zvezda spektroskopsi dvojna.</p>
+<p>THE END!</p>
+</div>
+<!-- /.entry-content -->
+</article>
+</section>
+</div>
+<div class="col-sm-3" id="sidebar">
+<aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+<ul class="list-group list-group-flush">
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+<h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+<ul class="list-group" id="social">
+<li class="list-group-item"><a href="https://linkedin.com/in/lazar-zivadinovic-8a6437161"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+<li class="list-group-item"><a href="https://github.com/lzivadinovic"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+</ul>
+</li>
+<!-- End Sidebar/Social -->
+<!-- Sidebar/Images -->
+<li class="list-group-item">
+<ul class="list-group" id="links">
+<img class="img-thumbnail" src="/images/walk.gif" width="100%"/>
+</ul>
+</li>
+<!-- End Sidebar/Images -->
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+<h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+<ul class="list-group" id="links">
+<li class="list-group-item">
+<a href="http://hmi.stanford.edu/hminuggets" target="_blank">HMI Science Nuggets</a>
+</li>
+<li class="list-group-item">
+<a href="http://hoggresearch.blogspot.com/" target="_blank">Hogg's Research</a>
+</li>
+<li class="list-group-item">
+<a href="http://hoggteaching.blogspot.com/" target="_blank">Hogg's Teaching</a>
+</li>
+<li class="list-group-item">
+<a href="http://nikolavitas.blogspot.com/" target="_blank">Nikola Vitas</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.astrobetter.com/" target="_blank">AstroBetter</a>
+</li>
+<li class="list-group-item">
+<a href="http://serious-science.org/" target="_blank">Serious Science</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.aftersabbath.com/" target="_blank">TDATS</a>
+</li>
+<li class="list-group-item">
+<a href="https://astrophysicsgirl.wordpress.com/" target="_blank">How to make an Astrophysicist</a>
+</li>
+<li class="list-group-item">
+<a href="https://lovewithmylost.wordpress.com/" target="_blank">Lovewithmylost</a>
+</li>
+<li class="list-group-item">
+<a href="http://ay117.blogspot.com/" target="_blank">Caltech Astrostats</a>
+</li>
+<li class="list-group-item">
+<a href="http://beneathdata.com/" target="_blank">Beneathdata</a>
+</li>
+<li class="list-group-item">
+<a href="https://astrobites.org/" target="_blank">Astrobites</a>
+</li>
+<li class="list-group-item">
+<a href="https://github.com/kaishengtai/neuralart" target="_blank">Neural Art</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.jazzmess.com/sessions/index.html" target="_blank">Cowboy Bebop music</a>
+</li>
+</ul>
+</li>
+<!-- End Sidebar/Links -->
+</ul>
+</section>
+<!-- End Sidebar --> </aside>
+</div>
+</div>
+</div>
+<!-- End Content Container -->
+<footer>
+<div class="container">
+<hr/>
+<div class="row">
+<div class="col-xs-10">© 2017 Lazar Zivadinovic
+            · Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> </div>
+<div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+</div>
+</div>
+</footer>
+<script src="http://lzivadinovic.com/theme/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://lzivadinovic.com/theme/js/bootstrap.min.js"></script>
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://lzivadinovic.com/theme/js/respond.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+<title>Parametri spektroskopsi dvojnog sistema - L Z</title>
+<!-- Using the latest rendering mode for IE -->
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="http://lzivadinovic.com/blog/spektro-star.html" rel="canonical"/>
+<meta content="Lazar Zivadinovic" name="author">
+<meta content="Rant o nacinu rada pokaznih vezbi na fakultetu" name="description">
+<meta content="L Z" property="og:site_name">
+<meta content="article" property="og:type"/>
+<meta content="Parametri spektroskopsi dvojnog sistema" property="og:title"/>
+<meta content="http://lzivadinovic.com/blog/spektro-star.html" property="og:url"/>
+<meta content="Rant o nacinu rada pokaznih vezbi na fakultetu" property="og:description"/>
+<meta content="2016-05-14" property="article:published_time"/>
+<meta content="articles" property="article:section"/>
+<meta content="Lazar Zivadinovic" property="article:author"/>
+<!-- Bootstrap -->
+<link href="http://lzivadinovic.com/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="http://lzivadinovic.com/theme/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="http://lzivadinovic.com/theme/css/pygments/native.css" rel="stylesheet"/>
+<link href="http://lzivadinovic.com/theme/css/style.css" rel="stylesheet" type="text/css">
+<link href="http://lzivadinovic.com/feeds/all.atom.xml" rel="alternate" title="L Z ATOM Feed" type="application/atom+xml">
+<link href="http://lzivadinovic.com/feeds/articles.atom.xml" rel="alternate" title="L Z articles ATOM Feed" type="application/atom+xml"/>
+</link></link></link></meta></meta></meta></head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container">
+<div class="navbar-header">
+<button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="http://lzivadinovic.com/">
+L Z            </a>
+</div>
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+<ul class="nav navbar-nav">
+<li><a href="/pages/about.html">About</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<!-- Content Container -->
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<section id="content">
+<article>
+<header class="page-header">
+<h1>
+<a href="http://lzivadinovic.com/blog/spektro-star.html" rel="bookmark" title="Permalink to Parametri spektroskopsi dvojnog sistema">
+                        Parametri spektroskopsi dvojnog sistema
+                    </a>
+</h1>
+</header>
+<div class="entry-content">
+<div class="panel">
+<div class="panel-body">
+<footer class="post-info">
+<span class="label label-default">Date</span>
+<span class="published">
+<i class="fa fa-calendar"></i><time datetime="2016-05-14T09:13:00+02:00"> May 14, 2016</time>
+</span>
+</footer><!-- /.post-info --> </div>
+</div>
+<p>Pre nego što krenem da postujem informacije o progresu, želim da izjavim da je ovo vežba najgora vežba koju smo imali na ovom predmetu. Zanimljiva problematika svakako, ali neizvodljiva vežba sa stanovišta preciznosti i smislenosti postupka sa ovako malim brojem merenja.</p>
+<p>Sledeća stvar koja mi smeta je to što ako ljudi koji prave ove vežbe već znaju za probleme koji se javljaju zašto ne  isprave vežbu jednostavno ili da je naprave tako da bude izvodljiva (kao što se u tekstu same pripreme pominje "Potrebno je više merenja.."). Problem je u tome da je cilj izvršiti zadatak baš kako je napisano tj. po uputstvu umesto da cilj bude izvršiti zadatak tačno. Tu je problem to što će fakultet ispljunuti gomilu nekreativnih i neambicioznih studenata koji samo znaju da prate uputstva i neće biti spremni na istraživački rad. Što ih u principu odmah posle završetka osnovnih studija i čeka (master je "proba" istraživačkog rada).</p>
+<img alt="" class="align-center" src="/images/spektro_zvezda/actuary-actuarius-evolution.jpg"/>
+<p>Ova vežba nije izvodljiva u okviru egzaktnih merenja, već se svodi na nagađanje. Meni stvarno nije jasno kako da integralim krivu čiji analitički oblik ne znam (u principu znam, ali ne znam parametre) (čak ni ne mogu da je skiciram zato što se ne bavim time pa da kažem "ja bih proterao autobus ovuda" ali to se svodi na frekventistički pristup). Sledeća stvar koja se pominje je "kada imamo krivu (hehe, LOL) možemo da integralimo PLANIMETROM". <a class="reference external" href="/images/spektro_zvezda/Patrick-Star-Smashing-A-Computer-On-Spongebob-Squarepants.gif">Ljudi, nije ovo 19. vek, imamo računare.</a> Ali to nije problem sa ovom vežbom. Glavni problem je taj da mi imamo generativni model  ali ga ignorišemo i stvaramo nova merenja (interpolacijom), koja u principu ne postoje. Ne bih se bunio da imamo više merenja i da onda radimo sa ovim stvarima, ali i dalje bih osećao nelagodnost.</p>
+<p><a class="reference external" href="/pdf/1008.4686.pdf">Elem, Hogg i ekipa (Bovy i Lang) su jako ozbiljno shvatili ovakav problem i napisali ozbiljnu stvar o tome.</a> U principu, pišu o tome kako se generativni model koristi za fit i da je rezultat toga DISTRIBUCIJA VEROVATNOĆE MODELA/parametara u tom modelu. Jer ako dobijemo "tačno rešenje" običnim MNK i uzmemo 1 sigma grešku mi ne govorimo o distribuciji već samo o jednom specifičnom rešenju što nam daje manje informacija o samom problemu.</p>
+<p>"Above all we emphasize the importance of having a "generative model" for the data, even an approximate one. Once there is generative model, the subsequent fitting is non arbitrary because the model permits direct computation of likelihood of the parameters or the posteriore probability distribution."</p>
+<p>"When fitting is used for data-driven prediction -- that is, using existing data to predict the properties of new data not yet acquired -- the conditions for model applicability are weaker. For example, a line fit by the standard method outlined in Section 1 can be, under a range of assumptions, the best linear prediction of new data, even when it is not a good or appropriate model."</p>
+<p>Zato mi nije prijatno da interpoliram na prazno ovu krivu. Da bih pokazao koliko je loše interpolirati ovakve podatke, to sam i uradio, koristeći cubic spline kao "najprirodniji metod". (Videti grafik)</p>
+<p>Nekako sam uspeo da se iskobeljam i da nadjem IDL proceduru koja fituje krivu radijalnih brzina na moje podatke pa onda integralim tu krivu da bih dobio parametre sistema nazad (hoću da pokažem kako od krive radijalnih brzina mogu da dobijem parametre sistema (što u principu znači da ako imam puno merenja mogu da koristim metod pomenut u uputstvu vežbe)) . Procedura se zove <a class="reference external" href="http://www.cefca.es/people/%7Eriglesias/rvfit.html">vrfit</a>.</p>
+<p>Ova metoda se zasniva na gore pomenutom Bajesovskom pristupu, Tj. daje verovatnoću za svaki parametar i što je bitnije distribucije te verovatnoće. Ovo su fitovane i zaokružene vrednosti. Raspodele su date na slici ispod. Ove neodredjenosti su majorirane 1 sigma devijacije gausijana.</p>
+<img alt="" class="align-center" src="/images/spektro_zvezda/distribucije_parametara_v4.png"/>
+<img alt="" class="image-process-article-image align-center" src="/images/spektro_zvezda/derivatives/article-image/vrednosti.png"/>
+<p>Sledeća stvar koju sam uradio je da sam na osnovu ovih parametara plotovao krivu radijalnih brzina za obe zvezde. Pritom rešavajući Keplerovu jednačinu pa korišćenjem te anomalije za izračunavanje <span class="math">\(\nu\)</span></p>
+<p>Elem, kada sam to uradio, dobio sam "normalnu" krivu koja savršeno prolazi kroz moje podatke i zapravo ima smisla. Zatim sam koristio tu krivu da dobijem parametre koristeći metodu Lehmann-Filhesa. Integralio osenčene povrsine (videti sliku, simpsonovim pravilom) i predstavio ih sa z11, z12, z21 i z22 (videti uputstvo vežbe) (pritom pazeći na znak, u smislu da negativne površine imaju negativni znak) i naravno, kao sto je prikazano u vežbi sveo "pocetak površine" na <span class="math">\(\gamma\)</span>.</p>
+<p>Ok, sivo i zuto su integraljene povrsine, sive su za prvu zvezdu, zute za drugu.</p>
+<img alt="" class="align-center" src="/images/spektro_zvezda/im_proving_shit.png"/>
+<p>Idem da se smirim i da pojedem POMONARANDZU! BRB</p>
+<p>Batali, otisao sam da spavam...</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+</div>
+<!-- /.entry-content -->
+</article>
+</section>
+</div>
+<div class="col-sm-3" id="sidebar">
+<aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+<ul class="list-group list-group-flush">
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+<h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+<ul class="list-group" id="social">
+<li class="list-group-item"><a href="https://linkedin.com/in/lazar-zivadinovic-8a6437161"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+<li class="list-group-item"><a href="https://github.com/lzivadinovic"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+</ul>
+</li>
+<!-- End Sidebar/Social -->
+<!-- Sidebar/Images -->
+<li class="list-group-item">
+<ul class="list-group" id="links">
+<img class="img-thumbnail" src="/images/walk.gif" width="100%"/>
+</ul>
+</li>
+<!-- End Sidebar/Images -->
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+<h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+<ul class="list-group" id="links">
+<li class="list-group-item">
+<a href="http://hmi.stanford.edu/hminuggets" target="_blank">HMI Science Nuggets</a>
+</li>
+<li class="list-group-item">
+<a href="http://hoggresearch.blogspot.com/" target="_blank">Hogg's Research</a>
+</li>
+<li class="list-group-item">
+<a href="http://hoggteaching.blogspot.com/" target="_blank">Hogg's Teaching</a>
+</li>
+<li class="list-group-item">
+<a href="http://nikolavitas.blogspot.com/" target="_blank">Nikola Vitas</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.astrobetter.com/" target="_blank">AstroBetter</a>
+</li>
+<li class="list-group-item">
+<a href="http://serious-science.org/" target="_blank">Serious Science</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.aftersabbath.com/" target="_blank">TDATS</a>
+</li>
+<li class="list-group-item">
+<a href="https://astrophysicsgirl.wordpress.com/" target="_blank">How to make an Astrophysicist</a>
+</li>
+<li class="list-group-item">
+<a href="https://lovewithmylost.wordpress.com/" target="_blank">Lovewithmylost</a>
+</li>
+<li class="list-group-item">
+<a href="http://ay117.blogspot.com/" target="_blank">Caltech Astrostats</a>
+</li>
+<li class="list-group-item">
+<a href="http://beneathdata.com/" target="_blank">Beneathdata</a>
+</li>
+<li class="list-group-item">
+<a href="https://astrobites.org/" target="_blank">Astrobites</a>
+</li>
+<li class="list-group-item">
+<a href="https://github.com/kaishengtai/neuralart" target="_blank">Neural Art</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.jazzmess.com/sessions/index.html" target="_blank">Cowboy Bebop music</a>
+</li>
+</ul>
+</li>
+<!-- End Sidebar/Links -->
+</ul>
+</section>
+<!-- End Sidebar --> </aside>
+</div>
+</div>
+</div>
+<!-- End Content Container -->
+<footer>
+<div class="container">
+<hr/>
+<div class="row">
+<div class="col-xs-10">© 2017 Lazar Zivadinovic
+            · Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> </div>
+<div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+</div>
+</div>
+</footer>
+<script src="http://lzivadinovic.com/theme/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://lzivadinovic.com/theme/js/bootstrap.min.js"></script>
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://lzivadinovic.com/theme/js/respond.min.js"></script>
+</body>
+</html>

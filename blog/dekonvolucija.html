@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+<title>Dekonvolucija HINODE/SOT snimaka i PSF teleskopa - L Z</title>
+<!-- Using the latest rendering mode for IE -->
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="http://lzivadinovic.com/blog/dekonvolucija.html" rel="canonical"/>
+<meta content="Lazar Zivadinovic" name="author">
+<meta content="Malo o dekonvoluciji FG snimaka sa HINODE/SOT" name="description">
+<meta content="L Z" property="og:site_name">
+<meta content="article" property="og:type"/>
+<meta content="Dekonvolucija HINODE/SOT snimaka i PSF teleskopa" property="og:title"/>
+<meta content="http://lzivadinovic.com/blog/dekonvolucija.html" property="og:url"/>
+<meta content="Malo o dekonvoluciji FG snimaka sa HINODE/SOT" property="og:description"/>
+<meta content="2016-06-15" property="article:published_time"/>
+<meta content="articles" property="article:section"/>
+<meta content="Lazar Zivadinovic" property="article:author"/>
+<!-- Bootstrap -->
+<link href="http://lzivadinovic.com/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="http://lzivadinovic.com/theme/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="http://lzivadinovic.com/theme/css/pygments/native.css" rel="stylesheet"/>
+<link href="http://lzivadinovic.com/theme/css/style.css" rel="stylesheet" type="text/css">
+<link href="http://lzivadinovic.com/feeds/all.atom.xml" rel="alternate" title="L Z ATOM Feed" type="application/atom+xml">
+<link href="http://lzivadinovic.com/feeds/articles.atom.xml" rel="alternate" title="L Z articles ATOM Feed" type="application/atom+xml"/>
+</link></link></link></meta></meta></meta></head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container">
+<div class="navbar-header">
+<button class="navbar-toggle" data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="http://lzivadinovic.com/">
+L Z            </a>
+</div>
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+<ul class="nav navbar-nav">
+<li><a href="/pages/about.html">About</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+</ul>
+</div>
+<!-- /.navbar-collapse -->
+</div>
+</div> <!-- /.navbar -->
+<!-- Banner -->
+<!-- End Banner -->
+<!-- Content Container -->
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<section id="content">
+<article>
+<header class="page-header">
+<h1>
+<a href="http://lzivadinovic.com/blog/dekonvolucija.html" rel="bookmark" title="Permalink to Dekonvolucija HINODE/SOT snimaka i PSF teleskopa">
+                        Dekonvolucija HINODE/SOT snimaka i PSF teleskopa
+                    </a>
+</h1>
+</header>
+<div class="entry-content">
+<div class="panel">
+<div class="panel-body">
+<footer class="post-info">
+<span class="label label-default">Date</span>
+<span class="published">
+<i class="fa fa-calendar"></i><time datetime="2016-06-15T09:15:00+02:00"> June 15, 2016</time>
+</span>
+</footer><!-- /.post-info --> </div>
+</div>
+<p>PSF (point spread function) nam govori o nepravilnostima u optičkom sistemu. Optički savršen sistem ima neki difrakcioni limit i strukture koje su manje od toga ne može da razluči. Naravno, ni jedan sistem nije optički savršen tako da dolazi do raznih aberacija unutar samog sistema koje utiču na kvalitet slike. PSF nam govori o tim aberacijama. U principu, nemoguće je odrediti PSF teleskopa ali je moguće "nagađati" tu funkciju i zatim redukovati snimke metodom dekonvolucije.</p>
+<img alt="" class="align-center" src="/images/dekonvolucija/deconvolve.jpg"/>
+<p>PSF HINODE teleskopa je određena u <a class="reference external" href="https://www.aanda.org/articles/aa/pdf/2009/27/aa11975-09.pdf">ovom radu</a> tako što su posmatrali tranzit Merkura. Predpostavili su da ako bi tranzit bio posmatran optički savršenim teleskopom, intenzitet piksela na površini Merkura bi bio zanemarljivo mali u odnosu na intenzitet piksela na kojima je Sunčeva površina. Na osnovu te predpostavke napravili su funkciju koja se sastoji iz 4 gausijana i testirali su je tako da se metodom dekonvolucije dobije nešto najpriblišnije predpostavci.</p>
+<p>Prva funkcija stvara PSF (2d matricu intenziteta).</p>
+<p>Dok druga funkcija/procedura(zapravo) radi dekonvoluciju metodom max_likelihood ili max_entropy (iz nekog razloga ne radi) i za input parametre traži put do slike koju želimo da "sredimo", broj iteracija (za max_likelihood (~30), u kom filteru je slika i tip dekonvolucije.</p>
+<p>Preporucujem da se procita docstring zato sto ima calling example i sve je lepo komentarisano. Mrzi me da pišem zato što je sve u fajlu.</p>
+<p>Fajl možete skinuti <a class="reference external" href="/code/deconvolve.pro">ovde</a>.</p>
+<p>Rezultat: RMS (Root Mean Square) sa 0.0799 na 0.0971 za blue continum</p>
+<p>Još uvek nisam uradio za ostale filtere (račun za RMS) ali smatram da je najmanja "dobit" za blue continuum snimke zato što su najoštriji. Najveće poboljšanje se očekuje kod red continuum snimaka zato što imaju najširi PSF.</p>
+</div>
+<!-- /.entry-content -->
+</article>
+</section>
+</div>
+<div class="col-sm-3" id="sidebar">
+<aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+<ul class="list-group list-group-flush">
+<!-- Sidebar/Social -->
+<li class="list-group-item">
+<h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+<ul class="list-group" id="social">
+<li class="list-group-item"><a href="https://linkedin.com/in/lazar-zivadinovic-8a6437161"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+<li class="list-group-item"><a href="https://github.com/lzivadinovic"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+</ul>
+</li>
+<!-- End Sidebar/Social -->
+<!-- Sidebar/Images -->
+<li class="list-group-item">
+<ul class="list-group" id="links">
+<img class="img-thumbnail" src="/images/walk.gif" width="100%"/>
+</ul>
+</li>
+<!-- End Sidebar/Images -->
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+<h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+<ul class="list-group" id="links">
+<li class="list-group-item">
+<a href="http://hmi.stanford.edu/hminuggets" target="_blank">HMI Science Nuggets</a>
+</li>
+<li class="list-group-item">
+<a href="http://hoggresearch.blogspot.com/" target="_blank">Hogg's Research</a>
+</li>
+<li class="list-group-item">
+<a href="http://hoggteaching.blogspot.com/" target="_blank">Hogg's Teaching</a>
+</li>
+<li class="list-group-item">
+<a href="http://nikolavitas.blogspot.com/" target="_blank">Nikola Vitas</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.astrobetter.com/" target="_blank">AstroBetter</a>
+</li>
+<li class="list-group-item">
+<a href="http://serious-science.org/" target="_blank">Serious Science</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.aftersabbath.com/" target="_blank">TDATS</a>
+</li>
+<li class="list-group-item">
+<a href="https://astrophysicsgirl.wordpress.com/" target="_blank">How to make an Astrophysicist</a>
+</li>
+<li class="list-group-item">
+<a href="https://lovewithmylost.wordpress.com/" target="_blank">Lovewithmylost</a>
+</li>
+<li class="list-group-item">
+<a href="http://ay117.blogspot.com/" target="_blank">Caltech Astrostats</a>
+</li>
+<li class="list-group-item">
+<a href="http://beneathdata.com/" target="_blank">Beneathdata</a>
+</li>
+<li class="list-group-item">
+<a href="https://astrobites.org/" target="_blank">Astrobites</a>
+</li>
+<li class="list-group-item">
+<a href="https://github.com/kaishengtai/neuralart" target="_blank">Neural Art</a>
+</li>
+<li class="list-group-item">
+<a href="http://www.jazzmess.com/sessions/index.html" target="_blank">Cowboy Bebop music</a>
+</li>
+</ul>
+</li>
+<!-- End Sidebar/Links -->
+</ul>
+</section>
+<!-- End Sidebar --> </aside>
+</div>
+</div>
+</div>
+<!-- End Content Container -->
+<footer>
+<div class="container">
+<hr/>
+<div class="row">
+<div class="col-xs-10">© 2017 Lazar Zivadinovic
+            · Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> </div>
+<div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+</div>
+</div>
+</footer>
+<script src="http://lzivadinovic.com/theme/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://lzivadinovic.com/theme/js/bootstrap.min.js"></script>
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://lzivadinovic.com/theme/js/respond.min.js"></script>
+</body>
+</html>
