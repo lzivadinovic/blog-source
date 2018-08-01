@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 
 AUTHOR = 'Lazar Zivadinovic'
-SITENAME = 'L Z'
+SITENAME = 'LZ'
 SITEURL = 'https://lzivadinovic.com'
 LOCAL_BOOTSTRAP = True
 ARTICLE_URL = 'blog/{slug}.html'
@@ -48,8 +48,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 DEFAULT_PAGINATION = 10 
-
-RELATIVE_URLS = False 
 
 THEME = "pelican-bootstrap3"
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
