@@ -1,0 +1,3 @@
+[submodule "pelican-plugins/image_process"]
+	path = pelican-plugins/image_process
+	url = https://github.com/whiskyechobravo/image_process.git
